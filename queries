@@ -1,0 +1,69 @@
+create database studcitydb;
+
+use studcitydb;
+
+create table faculty(
+    id bigint auto_increment,
+    dec_full_name varchar(64),
+    faculty_name varchar(64),
+    phone varchar(32),
+    constraint pk_id_faculty primary key(id)
+);
+
+create table dormitory(
+	id bigint auto_increment,
+    dorm_number int,
+    	dormitory_address varchar(64),
+	controller_full_name varchar(32),
+	phone varchar(32),
+    	constraint pk_id_dormitory primary key(id)
+);
+
+create table stud_gr(
+	id bigint auto_increment,
+	cipher_gr varchar(16),
+	faculty_id bigint,
+	constraint fk_faculty_id_stud_gr foreign key(faculty_id) references faculty(id),
+	constraint pk_id_stud_gr primary key(id)
+);
+
+create table students(
+	id bigint auto_increment,
+	card_number int,
+	full_name varchar(32),
+	date_of_birth date,
+	parents_addr varchar(64),
+	faculty_id bigint,
+	group_id bigint,
+	dormitory_id bigint,
+	room int,
+	constraint fk_faculty_id_students foreign key(faculty_id) references faculty(id),
+	constraint fk_group_id_students foreign key(group_id) references stud_gr(id),
+	constraint fk_dormitory_id_students foreign key(dormitory_id) references dormitory(id),
+	constraint pk_id_students primary key(id)
+);
+
+
+insert into dormitory(dorm_number,dormitory_address,controller_full_name,phone) values
+					(11,'Mayakovskogo 91B', 'Ivanov P.R','0663039143'),
+						(2,'Zakrevskogo 11','Petrov V.A','0542859423'),
+                        (4,'Rubova 56','Fedotov C.N','0453951523');
+
+insert into faculty(dec_full_name,faculty_name,phone) values
+			('Porev A.O','FICT','4593950142'),
+            ('Shevelo O.R','ABI','934819412'),
+            ('Watson A.F','QOC','0424954432');
+
+insert into stud_gr(cipher_gr,faculty_id) values
+		('IV-42',1),
+        ('IC-78',1),
+        ('IP-93',2);
+
+
+insert into students(card_number,full_name, date_of_birth, parents_addr, faculty_id, group_id, dormitory_id, room) values
+			(1254,'Antonov R.O','2000-12-26','Pokrova 11',1,3,2,333),
+			(2134,'Bystrov B.D','1999-10-16','Pokrova 12',3,2,1,543),
+            (3943,'Cors E.L','1999-09-03','Pokrova 13',2,2,3,11),
+            (4124,'Uvarov T.S','2001-04-11','Pokrova 14',2,1,3,765),
+            (5943,'Krasnov W.B','1998-07-07','Pokrova 15',3,2,2,19),
+            (6394,'Semer P.V','1997-11-02','Pokrova 16',2,2,3,10);
