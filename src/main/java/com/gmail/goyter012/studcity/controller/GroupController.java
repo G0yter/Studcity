@@ -109,7 +109,7 @@ public class GroupController {
                 break;
             }
         }
-        
+
         if (group.getFaculty() == null) {
             return "errors/facultyNotInList";
         }

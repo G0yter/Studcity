@@ -44,4 +44,9 @@ public class FacultyService {
     public List<Faculty> getAllFacultiesByName(String name){
         return facultyRepo.findAllByName(name);
     }
+
+
+
+
+
 }

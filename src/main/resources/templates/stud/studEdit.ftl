@@ -34,7 +34,7 @@
                 </div>
 
                 <div>
-                <input type="hidden" value="${student.getId()}" name="id">
+                    <input type="hidden" value="${student.getId()}" name="id">
                 </div>
                 <a>
                     *Enter all forms

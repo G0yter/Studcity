@@ -121,7 +121,7 @@
                     <a href="/del/${s.getId()}" class="card-link">Delete</a>
 
                 </div>
-           </div>
+            </div>
         </#list>
     </div>
 
